@@ -5,3 +5,21 @@
 <button class="btn btn-danger"><%= link_to "Delete List", list_path(@list),
                           :data => {:confirm => "Really?",
                           :method => "delete"} %></button>
+
+<% if @list.tasks.any? %>
+  <h3>Task On This List:</h3>
+
+  <ul>
+    <% @list.tasks.each do |task| %>
+    <li><%= task.description %>
+    | <%= link_to "Edit", edit_list_path(@list, task) %> | 
+    <%= link_to "Delete", list_task_path(@list, task),
+                          :data => {:confirm => "Are you sure?",
+                          :method => "delete"} %> |</li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no tasks in your list yet!</p>
+<% end %>
+<br>
+<p><%= link_to "Add Task", new_list_task_path(@list) %></p>
