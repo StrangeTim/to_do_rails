@@ -3,7 +3,7 @@
 <ul>
   <% @lists.each do |list| %>
     <li><%= link_to list.name, list_path(list)%> &nbsp&nbsp
-    <button class="btn btn-warning"><%= link_to "Delete", list_path(list),
+    <button class="btn btn-danger"><%= link_to "Delete", list_path(list),
                           :data => {:confirm => "Really?",
                           :method => "delete"} %></li></button>
   <% end %>
