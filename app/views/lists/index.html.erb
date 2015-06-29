@@ -2,6 +2,12 @@
 
 <ul>
   <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list)%></li>
+    <li><%= link_to list.name, list_path(list)%> &nbsp&nbsp
+    <button class="btn btn-warning"><%= link_to "Delete", list_path(list),
+                          :data => {:confirm => "Really?",
+                          :method => "delete"} %></li></button>
   <% end %>
 </ul>
+
+
+<%= link_to 'Create a new list', new_list_path %>
